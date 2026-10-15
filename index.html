@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jana Bakri, Software Engineer (Full-Stack & Mobile). Projects, experience and contact.">
+<title>Jana Bakri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single readable column, terminal-path section labels, projects as case-study blocks */
+:root{
+  --bg:#F4F6F3; --surface:#FFFFFF; --fg:#15201B; --muted:#5B6862; --line:#DCE3DE;
+  --accent:#1E7457; --accent-soft:#E2F0E9; --warm:#C98A1E;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1613; --surface:#16201C; --fg:#E7EEEA; --muted:#97A59E; --line:#26332D;
+  --accent:#5CC59C; --accent-soft:#1A2E26; --warm:#E5B04F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1613; --surface:#16201C; --fg:#E7EEEA; --muted:#97A59E; --line:#26332D;
+  --accent:#5CC59C; --accent-soft:#1A2E26; --warm:#E5B04F; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-weight:500;color:var(--fg);text-decoration:none}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-size:14px}
+nav ul a:hover{color:var(--fg)}
+
+header.hero{padding-block:72px 56px}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,9vw,84px);line-height:1;letter-spacing:-.02em;margin:22px 0 10px;text-wrap:balance}
+.role{font-family:var(--display);font-weight:500;font-size:clamp(20px,3.4vw,28px);color:var(--muted);margin:0 0 20px}
+.role b{color:var(--accent);font-weight:500}
+.lede{max-width:58ch;font-size:18px;margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);color:var(--fg);background:var(--surface);cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+
+section{padding-block:48px;border-top:1px solid var(--line)}
+.label{font-family:var(--mono);font-size:13px;color:var(--accent);margin:0 0 8px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,38px);line-height:1.15;margin:0 0 20px;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0 0 14px;max-width:65ch}
+
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:22px}
+.stack h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:13px;padding:3px 9px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
+
+.project{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-block:28px;border-bottom:1px dashed var(--line)}
+.project:last-child{border-bottom:0}
+.project>div{min-width:0}
+.pmeta .pname{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.1;margin:0 0 6px}
+.pmeta .ptype{font-size:14px;color:var(--muted);margin:0 0 12px}
+.featured{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--warm);border:1px solid currentColor;border-radius:4px;padding:1px 7px;margin-bottom:10px}
+dl{margin:0;display:grid;gap:12px}
+dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+dd{margin:2px 0 0}
+.plinks{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-weight:600;font-size:15px}
+
+.edu{display:grid;gap:16px}
+.edu-item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.edu-item h3{margin:0;font-size:17px}
+.edu-item p{margin:0;color:var(--muted);font-size:15px;grid-column:1/-1}
+.edu-item .tag{font-family:var(--mono);font-size:12px;color:var(--accent);align-self:start}
+
+.edu-item ul{grid-column:1/-1;margin:6px 0 0;padding-left:18px;font-size:15px;display:grid;gap:4px}
+.certs{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.certs li{display:flex;justify-content:space-between;gap:4px 16px;flex-wrap:wrap;padding-block:12px;border-bottom:1px solid var(--line)}
+.certs em{font-style:normal;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.langs{margin-top:18px;font-size:15px}
+.edu-item p strong{color:var(--fg);font-weight:600}
+.contact-list{display:grid;gap:10px;max-width:520px}
+.crow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);flex-wrap:wrap}
+.crow span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.crow code{font-family:var(--mono);font-size:14px;word-break:break-all}
+.copy{font-size:13px;padding:5px 10px}
+footer{padding-block:32px;color:var(--muted);font-size:13px;font-family:var(--mono);border-top:1px solid var(--line)}
+
+@media (max-width:640px){
+  .project{grid-template-columns:1fr;gap:12px}
+  header.hero{padding-block:48px 40px}
+  nav ul{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">jana<span>.dev</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <span class="status"><i></i>Open to Software Engineering roles · Riyadh</span>
+    <h1>Jana Bakri</h1>
+    <p class="role">Software Engineer · <b>Full-Stack &amp; Mobile</b></p>
+    <p class="lede">I build and ship full-stack web and mobile apps with Python, JavaScript and Flutter, backed by SQL databases and secure REST APIs. My latest is Bulbul, an AI app that helps people practice speaking English.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#projects">View my projects</a>
+      <a class="btn" href="https://github.com/janabakri" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/janabakri" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <p class="label">~/about</p>
+    <h2>About me</h2>
+    <p>I studied Computer Programming at Princess Nourah bint Abdulrahman University, then completed 462+ hours of intensive, project-based training in the Tuwaiq Holberton Coding Bootcamp at Tuwaiq Academy.</p>
+    <p>I've worked across the full delivery cycle, from requirements and development to testing and deployment, in Agile teams. My co-op at King Fahad Medical City and my work on Dawaei gave me real experience building software for healthcare.</p>
+    <p>I care about products that solve a real problem: helping elderly patients take medication safely, helping learners speak English with confidence, and teaching kids to code in Arabic.</p>
+  </section>
+
+  <section id="experience">
+    <p class="label">~/experience</p>
+    <h2>Experience</h2>
+    <div class="edu">
+      <div class="edu-item">
+        <h3>Software Engineering Trainee</h3><span class="tag">2026</span>
+        <p><strong>Tuwaiq Holberton Coding Bootcamp</strong> · Software Development Track, Tuwaiq Academy · Riyadh</p>
+        <ul>
+          <li>Engineered full-stack applications with clean, maintainable and scalable architecture.</li>
+          <li>Implemented automated testing to catch bugs early while working in cross-functional Agile teams.</li>
+          <li>Built and integrated secure REST APIs with authentication.</li>
+        </ul>
+      </div>
+      <div class="edu-item">
+        <h3>Co-op Trainee</h3><span class="tag">2025</span>
+        <p><strong>King Fahad Medical City</strong> · Riyadh</p>
+        <ul>
+          <li>Developed database solutions using SQL and built applications in C using Visual Studio.</li>
+          <li>Applied software engineering principles to technical challenges in a professional healthcare environment.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="label">~/projects</p>
+    <h2>Selected projects</h2>
+
+    <article class="project">
+      <div class="pmeta">
+        <span class="featured">Featured</span>
+        <h3 class="pname">Bulbul</h3>
+        <p class="ptype">AI English-speaking practice app<br>(formerly Hiwar App)</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">FastAPI</span><span class="chip">SQLite</span><span class="chip">AI</span></div>
+      </div>
+      <div>
+        <dl>
+          <div><dt>The problem</dt><dd>Many learners understand English but freeze when they have to speak it. They need a safe place to practice real conversations.</dd></div>
+          <div><dt>My role</dt><dd>I designed and built the app end to end: a FastAPI and SQLite backend, and a cross-platform mobile frontend in Flutter.</dd></div>
+          <div><dt>What's next</dt><dd>Adding an AI agent that guides each learner through conversations and adapts to their level.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="pmeta">
+        <h3 class="pname">Dawaei</h3>
+        <p class="ptype">Smart medication management app for the elderly<br>Graduation project</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Hono.js</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Railway</span></div>
+      </div>
+      <div>
+        <dl>
+          <div><dt>The problem</dt><dd>Elderly patients on several medications miss doses, and some drug combinations are dangerous when taken together.</dd></div>
+          <div><dt>My role</dt><dd>Results &amp; Documentation Lead. I led documentation and QA, and managed the PostgreSQL (Neon) database relations and cleaned datasets.</dd></div>
+          <div><dt>What we delivered</dt><dd>An MVP where users track medications, get reminders, connect with caregivers, and get warned about dangerous drug interactions. It includes secure authentication, bilingual RTL support and an accessibility-first UI, deployed with Docker on Railway.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="pmeta">
+        <h3 class="pname">HBnB</h3>
+        <p class="ptype">Property booking platform<br>Holberton project</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQLAlchemy</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div>
+        <dl>
+          <div><dt>The problem</dt><dd>A rental platform needs a reliable backend to manage users, places, amenities and reviews, plus a frontend people can browse.</dd></div>
+          <div><dt>What I built</dt><dd>A full-stack booking platform with a Flask REST API, a SQLAlchemy database layer, and a JavaScript frontend.</dd></div>
+        </dl>
+        <div class="plinks"><a href="https://github.com/janabakri/holbertonschool-hbnb" target="_blank" rel="noopener">Source code ↗</a></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="pmeta">
+        <h3 class="pname">Arabic Python for Kids</h3>
+        <p class="ptype">Educational web platform</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div>
+        <dl>
+          <div><dt>The problem</dt><dd>Most beginner programming material is in English, which makes coding harder to start for Arabic-speaking children.</dd></div>
+          <div><dt>What I built</dt><dd>An interactive web platform that teaches children Python programming in Arabic.</dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section id="skills">
+    <p class="label">~/skills</p>
+    <h2>Tech stack</h2>
+    <div class="stack">
+      <div><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Dart</span><span class="chip">Java</span><span class="chip">PHP</span><span class="chip">SQL</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">C</span></div></div>
+      <div><h3>Frameworks</h3><div class="chips"><span class="chip">Flutter</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Hono.js</span><span class="chip">SQLAlchemy</span></div></div>
+      <div><h3>Databases</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span></div></div>
+      <div><h3>Tools</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Docker</span><span class="chip">Railway</span><span class="chip">Postman</span><span class="chip">VS Code</span></div></div>
+      <div><h3>Concepts</h3><div class="chips"><span class="chip">REST APIs</span><span class="chip">Authentication</span><span class="chip">OOP</span><span class="chip">Automated Testing</span><span class="chip">Agile</span><span class="chip">AI Integration</span><span class="chip">Cybersecurity Fundamentals</span></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="label">~/education</p>
+    <h2>Education &amp; certifications</h2>
+    <div class="edu">
+      <div class="edu-item">
+        <h3>Diploma in Computer Programming</h3><span class="tag">2023 – 2025</span>
+        <p>Princess Nourah bint Abdulrahman University · Riyadh</p>
+      </div>
+    </div>
+    <ul class="certs">
+      <li><span>Holberton Foundation Bootcamp (462 hours)</span><em>Tuwaiq Academy · 2026</em></li>
+      <li><span>Machine Learning</span><em>IBM SkillsBuild · 2026</em></li>
+      <li><span>Introduction to Cybersecurity</span><em>Cisco Networking Academy · 2026</em></li>
+      <li><span>AI Concepts</span><em>SDAIA · 2025</em></li>
+    </ul>
+    <p class="langs"><strong>Languages:</strong> Arabic (native) · English (professional proficiency)</p>
+  </section>
+
+  <section id="contact">
+    <p class="label">~/contact</p>
+    <h2>Let's talk</h2>
+    <p>I'm looking for Software Engineering and Full-Stack roles. The fastest way to reach me is email.</p>
+    <div class="contact-list">
+      <div class="crow"><div><span>Email</span><br><code id="email">jjanabakri@gmail.com</code></div><button class="btn copy" id="copyBtn" type="button">Copy</button></div>
+      <div class="crow"><div><span>LinkedIn</span><br><code><a href="https://www.linkedin.com/in/janabakri" target="_blank" rel="noopener">linkedin.com/in/janabakri</a></code></div></div>
+      <div class="crow"><div><span>GitHub</span><br><code><a href="https://github.com/janabakri" target="_blank" rel="noopener">github.com/janabakri</a></code></div></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Jana Bakri · Riyadh, Saudi Arabia</footer>
+</main>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var b=this, t=document.getElementById('email').textContent;
+  function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)}
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+  try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
